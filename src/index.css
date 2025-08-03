@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+.bg-image{
+
+    background: url('https://minimog-4437.kxcdn.com/robust/wp-content/uploads/sites/7/2022/11/hero-image.jpg');
+    background-size: cover;
+
+}
+
+.text-underline{
+
+    text-underline-offset: 8px;
+
+}
+
+.effects:hover{
+
+    transform: scale(1.5);
+
+}
