@@ -21,9 +21,9 @@ const Showdata = ({e,i, popup, overflowval}) => {
         <Link to={`/product/${slug}`}>
             <div>
                 {/* <div onMouseEnter={setimage} onMouseLeave={mouseleave} className='overflow-hidden'> */}
-                <div className='overflow-hidden relative group w-full h-[400px] bg-green-200'>
-                    <img className={`group-hover:hidden block`} src={e.images[0]} alt="" />
-                    <img className={`effects duration-1000 absolute top-0 left-0 group-hover:block hidden`} src={e.images[1]} alt="" />
+                <div className='overflow-hidden relative group w-full h-[400px]'>
+                    <img className={`group-hover:hidden block`} src={e.images[0].image} alt="" />
+                    <img className={`effects duration-1000 absolute top-0 left-0 group-hover:block hidden`} src={e.images[1].image} alt="" />
                 </div>
                 <h2 className='uppercase text-lg mt-2'>{e.shoename}</h2>
                 <div className='flex gap-2'>

@@ -18,14 +18,13 @@ const Singleproductpage = () => {
 
   console.log(name);
   
-  
   let obj = Data.dataarr.find((e,i)=>{
     
     return e.shoename == name
     
   })
   
-  const [currentimage, setCurrentimage] = useState(obj?.images[0])
+  const [currentimage, setCurrentimage] = useState(obj?.images[0].image)
   const [currentcolor, setCurrentcolor] = useState(obj?.colors[0].colorname)
   const [currentsize, setCurrentsize] = useState(obj?.size[0])
   const [counter, setCounter] = useState(1)
@@ -46,7 +45,7 @@ const Singleproductpage = () => {
   
   const pickimage = (e)=>{
 
-    setCurrentimage(e)
+    setCurrentimage(e.image)
 
   }
 
@@ -54,7 +53,7 @@ const Singleproductpage = () => {
 
     setCartobj({
       
-      proimg: obj?.images[0], 
+      proimg: obj?.images[0].image, 
       prodname: obj?.shoename,
       prodcolor: currentcolor,
       prodsize: currentsize,
@@ -68,10 +67,15 @@ const Singleproductpage = () => {
   const selectcolor = (e)=>{
 
     setCurrentcolor(e.colorname)
-    // setColordisplay('border')
-    // setColorpadding('1px')
+    const foundImage = obj.images.find((ele) => e.colorname === ele.shoecolor);
+    if (foundImage) {
+      setCurrentimage(foundImage.image);
+    }
 
   }
+
+  console.log(currentimage);
+  
 
   const selectsize = (e)=>{
 
@@ -152,8 +156,8 @@ const Singleproductpage = () => {
 
                   return(<>
                   
-                    <div onClick={()=>{pickimage(e)}} className='w-full duration-200 hover:p-1 hover:border cursor-pointer'>
-                      <img src={e} alt="" />
+                    <div onClick={()=>{pickimage(e)}} className={`w-full duration-200 hover:p-1 hover:border cursor-pointer ${e.image == currentimage? 'p-1 border': ''}`}>
+                      <img src={e.image} alt="" />
                     </div>
                     
                   </>)
@@ -191,8 +195,8 @@ const Singleproductpage = () => {
                       
                         return(<>
                         
-                          <div className={`hover:p-1 rounded-full hover:border w-10 h-10 duration-200 ${e.colorname=='white'? 'shadow': ''} ${currentcolor == e.colorname ? "border p-1" : ""} cursor-pointer`}>
-                            <div onClick={()=>selectcolor(e)} className={`w-full h-full bg-[${e.colorcode}] rounded-full`}></div>
+                          <div className={`hover:p-1 rounded-full hover:border w-10 h-10 duration-200 ${e.colorname=='White'? 'shadow': ''} ${currentcolor == e.colorname ? "border p-1" : ""} cursor-pointer`}>
+                            <div onClick={()=>selectcolor(e)} className="w-full h-full rounded-full" style={{ backgroundColor: e.colorcode }}></div>
                           </div>
                           
                         </>)

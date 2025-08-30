@@ -27,10 +27,6 @@ const Storepage = () => {
 
     }
     
-
-    
-    
-    
  const [isScrolled, setIsScrolled] = useState(false);
 
 //   useEffect(() => {
